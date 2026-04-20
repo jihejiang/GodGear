@@ -1,0 +1,46 @@
+{
+  "format_version": 2,
+  "header": {
+    "name": "God Gear BP",
+    "description": "Working starter pack: sword, spear, mace, armor",
+    "uuid": "5bde73a8-9c7a-4d8e-9d2f-8aa0f0c8a101",
+    "version": [
+      1,
+      0,
+      0
+    ],
+    "min_engine_version": [
+      1,
+      21,
+      0
+    ]
+  },
+  "modules": [
+    {
+      "type": "data",
+      "uuid": "5bde73a8-9c7a-4d8e-9d2f-8aa0f0c8a102",
+      "version": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "type": "script",
+      "language": "javascript",
+      "entry": "scripts/main.js",
+      "uuid": "5bde73a8-9c7a-4d8e-9d2f-8aa0f0c8a103",
+      "version": [
+        1,
+        0,
+        0
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "module_name": "@minecraft/server",
+      "version": "2.6.0"
+    }
+  ]
+}

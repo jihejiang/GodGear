@@ -1,0 +1,27 @@
+{
+  "resource_pack_name": "God Gear RP",
+  "texture_name": "atlas.items",
+  "texture_data": {
+    "god_sword": {
+      "textures": "textures/items/god_sword"
+    },
+    "god_spear": {
+      "textures": "textures/items/god_spear"
+    },
+    "god_mace": {
+      "textures": "textures/items/god_mace"
+    },
+    "god_helmet": {
+      "textures": "textures/items/god_helmet"
+    },
+    "god_chestplate": {
+      "textures": "textures/items/god_chestplate"
+    },
+    "god_leggings": {
+      "textures": "textures/items/god_leggings"
+    },
+    "god_boots": {
+      "textures": "textures/items/god_boots"
+    }
+  }
+}

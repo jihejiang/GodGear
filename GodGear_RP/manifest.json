@@ -1,0 +1,29 @@
+{
+  "format_version": 2,
+  "header": {
+    "name": "God Gear RP",
+    "description": "Textures for God Gear",
+    "uuid": "5bde73a8-9c7a-4d8e-9d2f-8aa0f0c8b201",
+    "version": [
+      1,
+      0,
+      0
+    ],
+    "min_engine_version": [
+      1,
+      21,
+      0
+    ]
+  },
+  "modules": [
+    {
+      "type": "resources",
+      "uuid": "5bde73a8-9c7a-4d8e-9d2f-8aa0f0c8b202",
+      "version": [
+        1,
+        0,
+        0
+      ]
+    }
+  ]
+}
