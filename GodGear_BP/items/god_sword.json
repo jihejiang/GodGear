@@ -8,9 +8,7 @@
       }
     },
     "components": {
-      "minecraft:icon": {
-        "texture": "god_sword"
-      },
+      "minecraft:icon": "god_sword",
       "minecraft:display_name": {
         "value": "\u00a7f\u00a7lGod Sword"
       },
@@ -30,8 +28,10 @@
         "category": "godgear_sword",
         "duration": 7.0
       },
-      "godgear:unbreakable": {},
-      "godgear:sword_laser": {}
+      "minecraft:custom_components": [
+        "godgear:unbreakable",
+        "godgear:sword_laser"
+      ]
     }
   }
 }

@@ -8,24 +8,22 @@
       }
     },
     "components": {
-      "minecraft:icon": {
-        "texture": "god_chestplate"
-      },
+      "minecraft:icon": "god_chestplate",
       "minecraft:display_name": {
         "value": "\u00a7f\u00a7lGod Chestplate"
       },
       "minecraft:max_stack_size": 1,
       "minecraft:glint": true,
       "minecraft:wearable": {
-        "slot": "slot.armor.chest"
-      },
-      "minecraft:armor": {
+        "slot": "slot.armor.chest",
         "protection": 9
       },
       "minecraft:durability": {
         "max_durability": 9999
       },
-      "godgear:unbreakable": {}
+      "minecraft:custom_components": [
+        "godgear:unbreakable"
+      ]
     }
   }
 }

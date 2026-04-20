@@ -134,6 +134,31 @@ function nearestTargetInSight(player, maxDistance=24, minDot=0.95) {
   }
   return best;
 }
+function entitiesInFront(player, maxDistance = 24, minDot = 0.7) {
+  if (!isValidEntity(player)) return [];
+  const from = player.getHeadLocation();
+  const look = normalize(player.getViewDirection());
+  const found = [];
+  const entities = player.dimension.getEntities({
+    location: player.location,
+    maxDistance,
+    excludeTypes: ["minecraft:item", "minecraft:xp_orb"]
+  });
+  for (const entity of entities) {
+    if (!isValidEntity(entity) || entity.id === player.id) continue;
+    const targetPos = { x: entity.location.x, y: entity.location.y + 1, z: entity.location.z };
+    const toTarget = normalize({
+      x: targetPos.x - from.x,
+      y: targetPos.y - from.y,
+      z: targetPos.z - from.z
+    });
+    const facing = dot(look, toTarget);
+    if (facing < minDot) continue;
+    found.push({ entity, distance: distance(from, targetPos) });
+  }
+  found.sort((a, b) => a.distance - b.distance);
+  return found.map((entry) => entry.entity);
+}
 function drawLaser(player, length=24) {
   if (!isValidEntity(player)) return;
   const start = player.getHeadLocation();
@@ -146,13 +171,18 @@ function drawLaser(player, length=24) {
 }
 function fireSwordLaser(player) {
   if (!isValidEntity(player)) return;
-  drawLaser(player, 24);
+  drawLaser(player, 32);
   sound(player, "random.orb", player.location);
-  const target = nearestTargetInSight(player, 24, 0.96);
-  if (!target) return;
-  try { target.applyDamage(16, { damagingEntity: player, cause: "magic" }); } catch {}
-  try { target.setOnFire(3, true); } catch {}
-  sound(player, "random.explode", target.location);
+  const targets = entitiesInFront(player, 32, 0.72).slice(0, 3);
+  if (targets.length === 0) {
+    send(player, "§7No target in sight");
+    return;
+  }
+  for (const target of targets) {
+    try { target.applyDamage(16, { damagingEntity: player, cause: "magic" }); } catch {}
+    try { target.setOnFire(3, true); } catch {}
+    sound(player, "random.explode", target.location);
+  }
 }
 function startSwordCharge(player) {
   if (!isValidEntity(player)) return;
@@ -183,6 +213,15 @@ function spearStrike(attacker, target) {
   try { target.addEffect("slowness", 40, { amplifier: 10, showParticles: true }); } catch {}
   try { target.addEffect("weakness", 40, { amplifier: 2, showParticles: false }); } catch {}
   sound(attacker, "ambient.weather.lightning.impact", target.location);
+}
+function spearCall(attacker) {
+  if (!isValidEntity(attacker)) return;
+  const target = nearestTargetInSight(attacker, 30, 0.75);
+  if (!target) {
+    send(attacker, "§7No target for spear");
+    return;
+  }
+  spearStrike(attacker, target);
 }
 function maceBurst(attacker, target) {
   if (!isValidEntity(attacker) || !isValidEntity(target)) return;
@@ -236,6 +275,14 @@ system.beforeEvents.startup.subscribe((event) => {
       e.durabilityDamage = 0;
     }
   });
+  reg.registerCustomComponent("godgear:spear_call", {
+    onUse(e) {
+      spearCall(e.source);
+    },
+    onBeforeDurabilityDamage(e) {
+      e.durabilityDamage = 0;
+    }
+  });
   reg.registerCustomComponent("godgear:mace_burst", {
     onHitEntity(e) {
       maceBurst(e.attackingEntity, e.hitEntity);
@@ -272,6 +319,7 @@ world.afterEvents.entityHitEntity.subscribe((e) => {
   const item = getMainhand(attacker);
   if (!item) return;
   if (item.typeId === IDS.spear) spearStrike(attacker, e.hitEntity);
+  if (item.typeId === IDS.mace) maceBurst(attacker, e.hitEntity);
 });
 
 system.runInterval(() => {

@@ -8,18 +8,14 @@
       }
     },
     "components": {
-      "minecraft:icon": {
-        "texture": "god_leggings"
-      },
+      "minecraft:icon": "god_leggings",
       "minecraft:display_name": {
         "value": "\u00a7f\u00a7lGod Leggings"
       },
       "minecraft:max_stack_size": 1,
       "minecraft:glint": true,
       "minecraft:wearable": {
-        "slot": "slot.armor.legs"
-      },
-      "minecraft:armor": {
+        "slot": "slot.armor.legs",
         "protection": 7
       },
       "minecraft:use_modifiers": {
@@ -30,8 +26,10 @@
       "minecraft:durability": {
         "max_durability": 9999
       },
-      "godgear:unbreakable": {},
-      "godgear:toggle_speed": {}
+      "minecraft:custom_components": [
+        "godgear:unbreakable",
+        "godgear:toggle_speed"
+      ]
     }
   }
 }
