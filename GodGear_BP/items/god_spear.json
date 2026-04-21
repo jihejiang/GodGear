@@ -4,16 +4,12 @@
     "description": {
       "identifier": "godgear:god_spear",
       "menu_category": {
-        "category": "equipment",
+        "category": "none",
         "group": "minecraft:itemGroup.name.sword"
       }
     },
     "components": {
-      "minecraft:icon": {
-        "textures": {
-          "default": "god_spear"
-        }
-      },
+      "minecraft:icon": "godgear:god_spear",
       "minecraft:display_name": {
         "value": "§f§lGod Spear"
       },

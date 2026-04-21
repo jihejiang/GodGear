@@ -4,16 +4,12 @@
     "description": {
       "identifier": "godgear:god_mace",
       "menu_category": {
-        "category": "equipment",
+        "category": "none",
         "group": "minecraft:itemGroup.name.sword"
       }
     },
     "components": {
-      "minecraft:icon": {
-        "textures": {
-          "default": "god_mace"
-        }
-      },
+      "minecraft:icon": "godgear:god_mace",
       "minecraft:display_name": {
         "value": "§f§lGod Mace"
       },

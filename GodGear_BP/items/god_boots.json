@@ -4,16 +4,12 @@
     "description": {
       "identifier": "godgear:god_boots",
       "menu_category": {
-        "category": "equipment",
+        "category": "none",
         "group": "minecraft:itemGroup.name.boots"
       }
     },
     "components": {
-      "minecraft:icon": {
-        "textures": {
-          "default": "god_boots"
-        }
-      },
+      "minecraft:icon": "godgear:god_boots",
       "minecraft:display_name": {
         "value": "§f§lGod Boots"
       },

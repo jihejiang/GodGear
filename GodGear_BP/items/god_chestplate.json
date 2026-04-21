@@ -4,16 +4,12 @@
     "description": {
       "identifier": "godgear:god_chestplate",
       "menu_category": {
-        "category": "equipment",
+        "category": "none",
         "group": "minecraft:itemGroup.name.chestplate"
       }
     },
     "components": {
-      "minecraft:icon": {
-        "textures": {
-          "default": "god_chestplate"
-        }
-      },
+      "minecraft:icon": "godgear:god_chestplate",
       "minecraft:display_name": {
         "value": "§f§lGod Chestplate"
       },

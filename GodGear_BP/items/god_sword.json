@@ -4,16 +4,12 @@
     "description": {
       "identifier": "godgear:god_sword",
       "menu_category": {
-        "category": "equipment",
+        "category": "none",
         "group": "minecraft:itemGroup.name.sword"
       }
     },
     "components": {
-      "minecraft:icon": {
-        "textures": {
-          "default": "god_sword"
-        }
-      },
+      "minecraft:icon": "godgear:god_sword",
       "minecraft:display_name": {
         "value": "§f§lGod Sword"
       },

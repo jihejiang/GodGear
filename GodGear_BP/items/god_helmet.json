@@ -4,16 +4,12 @@
     "description": {
       "identifier": "godgear:god_helmet",
       "menu_category": {
-        "category": "equipment",
+        "category": "none",
         "group": "minecraft:itemGroup.name.helmet"
       }
     },
     "components": {
-      "minecraft:icon": {
-        "textures": {
-          "default": "god_helmet"
-        }
-      },
+      "minecraft:icon": "godgear:god_helmet",
       "minecraft:display_name": {
         "value": "§f§lGod Helmet"
       },
