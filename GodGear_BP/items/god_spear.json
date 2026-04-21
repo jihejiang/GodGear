@@ -22,8 +22,8 @@
         "value": 6
       },
       "minecraft:use_modifiers": {
-        "use_duration": 0.1,
-        "movement_modifier": 1.0
+        "use_duration": 10.0,
+        "movement_modifier": 0.8
       },
       "minecraft:use_animation": "spear",
       "minecraft:enchantable": {
@@ -31,15 +31,12 @@
         "value": 10
       },
       "minecraft:durability": {
-        "max_durability": 9999
-      },
-      "minecraft:cooldown": {
-        "category": "godgear_spear",
-        "duration": 0.6
-      },
-      "minecraft:custom_components": [
-        "godgear:unbreakable"
-      ]
+        "max_durability": 9999,
+        "damage_chance": {
+          "min": 0,
+          "max": 0
+        }
+      }
     }
   }
 }

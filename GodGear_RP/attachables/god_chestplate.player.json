@@ -3,6 +3,9 @@
   "minecraft:attachable": {
     "description": {
       "identifier": "godgear:god_chestplate",
+      "item": {
+        "godgear:god_chestplate": "query.is_owner_identifier_any('minecraft:player')"
+      },
       "materials": {
         "default": "armor",
         "enchanted": "armor_enchanted"

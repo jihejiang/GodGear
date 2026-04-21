@@ -24,11 +24,12 @@
         "value": 10
       },
       "minecraft:durability": {
-        "max_durability": 9999
-      },
-      "minecraft:custom_components": [
-        "godgear:unbreakable"
-      ]
+        "max_durability": 9999,
+        "damage_chance": {
+          "min": 0,
+          "max": 0
+        }
+      }
     }
   }
 }

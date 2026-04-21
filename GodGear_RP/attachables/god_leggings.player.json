@@ -3,6 +3,9 @@
   "minecraft:attachable": {
     "description": {
       "identifier": "godgear:god_leggings",
+      "item": {
+        "godgear:god_leggings": "query.is_owner_identifier_any('minecraft:player')"
+      },
       "materials": {
         "default": "armor",
         "enchanted": "armor_enchanted"
