@@ -8,7 +8,9 @@
       }
     },
     "components": {
-      "minecraft:icon": "god_chestplate",
+      "minecraft:icon": {
+        "texture": "god_chestplate"
+      },
       "minecraft:display_name": {
         "value": "\u00a7f\u00a7lGod Chestplate"
       },
@@ -17,6 +19,10 @@
       "minecraft:wearable": {
         "slot": "slot.armor.chest",
         "protection": 9
+      },
+      "minecraft:enchantable": {
+        "slot": "armor_torso",
+        "value": 10
       },
       "minecraft:durability": {
         "max_durability": 9999

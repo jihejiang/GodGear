@@ -8,25 +8,30 @@
       }
     },
     "components": {
-      "minecraft:icon": "god_spear",
+      "minecraft:icon": {
+        "texture": "god_spear"
+      },
       "minecraft:display_name": {
         "value": "\u00a7f\u00a7lGod Spear"
       },
       "minecraft:max_stack_size": 1,
       "minecraft:glint": true,
       "minecraft:hand_equipped": true,
-      "minecraft:damage": 10,
+      "minecraft:damage": 6,
       "minecraft:use_modifiers": {
         "use_duration": 1.0,
         "movement_modifier": 0.8
       },
       "minecraft:use_animation": "bow",
+      "minecraft:enchantable": {
+        "slot": "melee_spear",
+        "value": 10
+      },
       "minecraft:durability": {
         "max_durability": 9999
       },
       "minecraft:custom_components": [
-        "godgear:unbreakable",
-        "godgear:spear_call"
+        "godgear:unbreakable"
       ]
     }
   }

@@ -8,20 +8,25 @@
       }
     },
     "components": {
-      "minecraft:icon": "god_mace",
+      "minecraft:icon": {
+        "texture": "god_mace"
+      },
       "minecraft:display_name": {
         "value": "\u00a7f\u00a7lGod Mace"
       },
       "minecraft:max_stack_size": 1,
       "minecraft:glint": true,
       "minecraft:hand_equipped": true,
-      "minecraft:damage": 12,
+      "minecraft:damage": 5,
+      "minecraft:enchantable": {
+        "slot": "all",
+        "value": 10
+      },
       "minecraft:durability": {
         "max_durability": 9999
       },
       "minecraft:custom_components": [
-        "godgear:unbreakable",
-        "godgear:mace_burst"
+        "godgear:unbreakable"
       ]
     }
   }
