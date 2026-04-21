@@ -1,0 +1,32 @@
+# macOS
+.DS_Store
+._*
+
+# Windows
+Thumbs.db
+desktop.ini
+
+# Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Claude Code (per-user symlink to AGENTS.md, not for the repo)
+CLAUDE.md
+.claude.local.md
+.claude/settings.local.json
+
+# Bedrock add-on build outputs
+*.mcaddon
+*.mcpack
+*.zip
+
+# Python (used for one-off texture generation)
+__pycache__/
+*.pyc
+
+# Backup / scratch files
+*.bak
+*.orig
