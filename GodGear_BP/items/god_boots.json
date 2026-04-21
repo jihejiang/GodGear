@@ -4,7 +4,8 @@
     "description": {
       "identifier": "godgear:god_boots",
       "menu_category": {
-        "category": "equipment"
+        "category": "equipment",
+        "group": "minecraft:itemGroup.name.boots"
       }
     },
     "components": {

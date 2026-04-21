@@ -48,6 +48,7 @@ Use this file as the operating guide when updating the add-on with Codex or othe
 - `Entity.isValid` — is a property in 2.x, was a function in 1.x. Use the `isValidEntity()` helper that handles both.
 - `minecraft:use_animation: "bow"` on a non-bow custom item falls back to the **eat** animation on right-click. Use `"spear"` or omit it for a neutral hold.
 - `ItemEnchantableComponent.addEnchantment` enforces `maxLevel` and conflict rules (throws `EnchantmentLevelOutOfBoundsError` / `EnchantmentTypeNotCompatibleError`). There is no unsafe variant.
+- `description.menu_category` needs BOTH `category` and `group` (e.g. `"group": "minecraft:itemGroup.name.sword"`) for a custom item to show up in the creative inventory. Just setting `category` leaves the item orphaned and the player can only obtain it via `/give`. The `minecraft:` prefix on the group string is required.
 
 ## Enchantment Policy
 

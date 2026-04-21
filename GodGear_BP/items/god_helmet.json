@@ -4,7 +4,8 @@
     "description": {
       "identifier": "godgear:god_helmet",
       "menu_category": {
-        "category": "equipment"
+        "category": "equipment",
+        "group": "minecraft:itemGroup.name.helmet"
       }
     },
     "components": {
