@@ -4,8 +4,7 @@ import {
   EquipmentSlot,
   EntityComponentTypes,
   ItemComponentTypes,
-  EnchantmentTypes,
-  EntitySwingSource
+  EnchantmentTypes
 } from "@minecraft/server";
 
 const TICKS = 20;
@@ -135,6 +134,31 @@ function particle(player, name, pos) {
 function sound(player, name, pos) {
   try {
     player.dimension.playSound(name, pos ?? player.location);
+  } catch {}
+}
+
+function subscribeIfAvailable(signal, callback) {
+  if (!signal?.subscribe) return false;
+  signal.subscribe(callback);
+  return true;
+}
+
+function knockback(entity, x, z, horizontal, vertical) {
+  if (!isValidEntity(entity)) return;
+  const horizontalVector = normalize({ x, y: 0, z });
+  try {
+    entity.applyKnockback(
+      { x: horizontalVector.x * horizontal, z: horizontalVector.z * horizontal },
+      vertical
+    );
+    return;
+  } catch {}
+  try {
+    entity.applyImpulse({
+      x: horizontalVector.x * horizontal,
+      y: vertical,
+      z: horizontalVector.z * horizontal
+    });
   } catch {}
 }
 
@@ -326,9 +350,7 @@ function spearFreezeHit(attacker, target, damage = 6) {
 
 function spearLunge(player) {
   const dir = normalize(player.getViewDirection());
-  try {
-    player.applyKnockback(dir.x, dir.z, 2.4, 0.15);
-  } catch {}
+  knockback(player, dir.x, dir.z, 2.4, 0.15);
   drawFreezeTrail(player, 8);
   const target = nearestTargetInSight(player, 5, 0.45);
   if (target) spearFreezeHit(player, target, 7);
@@ -378,9 +400,7 @@ function maceSmash(attacker, target) {
       y: 0,
       z: entity.location.z - target.location.z
     });
-    try {
-      entity.applyKnockback(push.x || 0, push.z || 1, 1.7, 0.5);
-    } catch {}
+    knockback(entity, push.x || 0, push.z || 1, 1.7, 0.5);
     if (entity.id !== target.id) applyDamage(entity, 4, attacker);
   }
 }
@@ -409,7 +429,7 @@ function armorEffects(player) {
   }
 }
 
-world.afterEvents.itemUse.subscribe((event) => {
+subscribeIfAvailable(world.afterEvents.itemUse, (event) => {
   const player = event.source;
   const item = event.itemStack;
   if (!player || player.typeId !== "minecraft:player" || !item) return;
@@ -419,7 +439,7 @@ world.afterEvents.itemUse.subscribe((event) => {
   swordBeam(player);
 });
 
-world.afterEvents.itemReleaseUse.subscribe((event) => {
+subscribeIfAvailable(world.afterEvents.itemReleaseUse, (event) => {
   const player = event.source;
   const item = event.itemStack;
   if (!player || !item || item.typeId !== IDS.spear) return;
@@ -428,18 +448,17 @@ world.afterEvents.itemReleaseUse.subscribe((event) => {
   spearChargeAttack(player);
 });
 
-world.afterEvents.playerSwingStart.subscribe((event) => {
+subscribeIfAvailable(world.afterEvents.playerSwingStart, (event) => {
   const player = event.player;
   const item = event.heldItemStack;
   if (!player || !item) return;
-  if (event.swingSource !== EntitySwingSource.Attack) return;
   if (item.typeId !== IDS.spear) return;
   if (onCooldown(player, "spear_lunge")) return;
   setCooldown(player, "spear_lunge", 0.5);
   spearLunge(player);
 });
 
-world.afterEvents.entityHitEntity.subscribe((event) => {
+subscribeIfAvailable(world.afterEvents.entityHitEntity, (event) => {
   const attacker = event.damagingEntity;
   if (!attacker || attacker.typeId !== "minecraft:player") return;
   const item = getMainhand(attacker);
