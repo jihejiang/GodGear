@@ -1,5 +1,5 @@
 {
-  "format_version": "1.21.0",
+  "format_version": "1.21.100",
   "minecraft:item": {
     "description": {
       "identifier": "godgear:god_leggings",
@@ -9,10 +9,12 @@
     },
     "components": {
       "minecraft:icon": {
-        "texture": "god_leggings"
+        "textures": {
+          "default": "god_leggings"
+        }
       },
       "minecraft:display_name": {
-        "value": "\u00a7f\u00a7lGod Leggings"
+        "value": "§f§lGod Leggings"
       },
       "minecraft:max_stack_size": 1,
       "minecraft:glint": true,

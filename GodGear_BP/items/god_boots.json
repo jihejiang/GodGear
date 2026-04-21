@@ -1,5 +1,5 @@
 {
-  "format_version": "1.21.0",
+  "format_version": "1.21.100",
   "minecraft:item": {
     "description": {
       "identifier": "godgear:god_boots",
@@ -9,10 +9,12 @@
     },
     "components": {
       "minecraft:icon": {
-        "texture": "god_boots"
+        "textures": {
+          "default": "god_boots"
+        }
       },
       "minecraft:display_name": {
-        "value": "\u00a7f\u00a7lGod Boots"
+        "value": "§f§lGod Boots"
       },
       "minecraft:max_stack_size": 1,
       "minecraft:glint": true,
